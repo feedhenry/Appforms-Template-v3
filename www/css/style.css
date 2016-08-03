@@ -21,6 +21,16 @@ div#debuggingWindow {
     background: white;
 }
 
+#weather {
+    width: 100%;
+    text-align: center;
+}
+
+#weather input {
+    width: 100%;
+    text-align: center;
+}
+
 @media screen and (max-width: 767px) {
     .row-offcanvas {
         /* position: relative; */
