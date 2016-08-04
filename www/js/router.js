@@ -33,6 +33,7 @@ App.Router = Backbone.Router.extend({
                     App.views.sent_list = new SentListView();
                     App.views.settings = new SettingsView();
                     App.views.header = new HeaderView();
+                    App.views.weather = new WeatherView();
 
                     if ($('#fh_appform_style').length > 0) {
                         $('#fh_appform_style').html(themeCSS);
