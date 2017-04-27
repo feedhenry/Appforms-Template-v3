@@ -32,7 +32,7 @@ App.populateFieldData = function(callback) {
       //Here, we can get access to fields using their field codes
       //Field codes are assigned when defining fields in the studio.
       //See https://access.redhat.com/documentation/en/red-hat-mobile-application-platform-hosted/3/paged/product-features/chapter-3-drag-and-drop-apps (Section 3.1.2.2.)
-      var fieldModel = formModel.getFieldModelByCode("testFieldCode");
+      var fieldModel = formModel.getFieldModelByCode("text");
       var fieldId = fieldModel.get("_id");
 
       submission.addInputValue({
@@ -43,7 +43,6 @@ App.populateFieldData = function(callback) {
 
         //Re-rendering the form with the latest submission.
         App.views.form.initWithForm(formModel, {submission: submission});
-        App.views.form.render();
 
         return callback ? callback(err, value) : null;
       });
