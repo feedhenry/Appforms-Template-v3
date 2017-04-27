@@ -1,4 +1,39 @@
 /**
+ * Adding a single field Value.
+ * @param formModel
+ * @param submission
+ * @param value
+ * @param fieldCode
+ * @param cb
+ */
+function addFieldValue(formModel, submission, value, fieldCode, cb) {
+
+  //Here, we can get access to fields using their field codes
+  //Field codes are assigned when defining fields in the studio.
+  //See https://access.redhat.com/documentation/en/red-hat-mobile-application-platform-hosted/3/paged/product-features/chapter-3-drag-and-drop-apps (Section 3.1.2.2.)
+  var fieldModel = formModel.getFieldModelByCode(fieldCode);
+  var fieldId = fieldModel.get("_id");
+
+  submission.addInputValue({
+    fieldId: fieldId,
+    value: value,
+    index: 0
+  }, cb);
+}
+
+/**
+ * Getting a single field value from a cloud app.
+ * @param fieldCode
+ * @param cb
+ */
+function getFieldValue(fieldCode, cb) {
+  //TODO: Create endpoints..
+  $fh.cloud({path: fieldCode, data: {user : "someuserid"}}, function(err, response) {
+    return cb(err, response.value);
+  });
+}
+
+/**
  *
  * Example function to demonstrate:
  *
@@ -29,22 +64,28 @@ App.populateFieldData = function(callback) {
         return;
       }
 
-      //Here, we can get access to fields using their field codes
-      //Field codes are assigned when defining fields in the studio.
-      //See https://access.redhat.com/documentation/en/red-hat-mobile-application-platform-hosted/3/paged/product-features/chapter-3-drag-and-drop-apps (Section 3.1.2.2.)
-      var fieldModel = formModel.getFieldModelByCode("text");
-      var fieldId = fieldModel.get("_id");
+      async.each([
+        {
+          fieldCode: "text"
+        },
+        {
+          fieldCode: "number"
+        }
+      ], function(valToAdd, cb) {
 
-      submission.addInputValue({
-        fieldId: fieldId,
-        value: "testtextvalue",
-        index: 0
-      }, function(err, value) {
+        getFieldValue(valToAdd.fieldCode, function(err, value) {
+          if(err) {
+            return cb(err);
+          }
+
+          addFieldValue(formModel, submission, value, valToAdd.fieldCode, cb);
+        });
+      },  function(err) {
 
         //Re-rendering the form with the latest submission.
         App.views.form.initWithForm(formModel, {submission: submission});
 
-        return callback ? callback(err, value) : null;
+        return callback ? callback(err) : null;
       });
     });
   }
