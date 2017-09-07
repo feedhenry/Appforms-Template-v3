@@ -134,7 +134,10 @@ module.exports = function(grunt) {
         },// Watches files for changes and runs tasks based on the changed files
         watch: {
           js: {
-            files: ['<%= app.app %>/scripts/{,*/}*.js', '/Users/Mick/fh-sdks/Appforms-Template-v3/node_modules/fh-js-sdk/dist/appForms-backbone.js'],
+            files: [
+              '<%= app.app %>/scripts/{,*/}*.js',
+              '/Users/Mick/fh-sdks/Appforms-Template-v3/node_modules/fh-js-sdk/dist/*.js'
+            ],
             tasks: ['browserify'],
             options: {
               livereload: 35730
