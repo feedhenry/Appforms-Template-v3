@@ -47,7 +47,7 @@ FormModel = Backbone.Model.extend({
 
         function sanitizeField(field) {
             if (field.props) {
-                if (["radio", "dropdown", "checkboxes"].indexOf(field.props.type) >= 0) {
+                if (["radio", "dropdown", "checkboxes", "readOnly"].indexOf(field.props.type) >= 0) {
                     // Multiple choice fields need special treatment
                     sanitizeMultipleChoice(field);
                 }
@@ -60,6 +60,19 @@ FormModel = Backbone.Model.extend({
                 sanitizeField(form.fields[field]);
             }
         }
+
+        var pages = form.pages || [];
+        // loop over and sanitize pages in the form
+        for (var i = 0; i < pages.length; i++) {
+            var page = pages[i];
+            page.props.name = _.escape(page.props.name);
+            page.props.description = _.escape(page.props.description);
+        }
+    
+        // sanitize root level form values
+        form.props.title = _.escape(form.props.title);
+        form.props.name = _.escape(form.props.name);
+        form.props.description = _.escape(form.props.description);
     },
     loadForm: function() {
         var formId = this.get("formId");

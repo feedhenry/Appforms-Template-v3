@@ -28,7 +28,7 @@ SubmissionListview = Backbone.View.extend({
 
     if(collection.models.length > 0){
       _.each(groupedSubmissions, function(models, formId){
-          var formName = models[0].get('formName');
+          var formName = models[0].escape('formName');
           var status = collection.status;
           if(status instanceof(Array)){
             status = status[0];
