@@ -19,7 +19,7 @@ ShowFormButtonView = Backbone.View.extend({
         var html;
 
         //If the name of the form has not been set yet, it is loading.
-        var name = this.model.get("name") || "Loading...";
+        var name = this.model.escape("name") || "Loading...";
 
         var fullyLoaded = this.model.get('fh_full_data_loaded');
         var errorLoading = this.model.get('fh_error_loading');
