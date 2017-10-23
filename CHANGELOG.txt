@@ -1,3 +1,7 @@
+1.3.16 - 2017-10-23 - Rachael O'Regan
+
+Updating fh-js-sdk to 2.22.5
+
 1.3.15 - 2017-10-13 - Rachael O'Regan
 
 Updating fh-js-sdk to 2.22.4
