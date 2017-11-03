@@ -59,7 +59,7 @@ ItemView = Backbone.View.extend({
         buttons = this.getButtons() === false ? false: buttons;
 
         var item = _.template($(template).html())( {
-            name: this.model.get('formName'),
+            name: this.model.escape('formName'),
             id: this.getIdText(),
             timestamp: this.getItemTime(),
             error_type: (error && error.type) ? error.type : null,
