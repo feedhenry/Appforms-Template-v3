@@ -11,4 +11,5 @@ window.moment = require('moment');
 require('bootstrap');
 require('bootstrap-tagsinput');
 require('bootstrap-slider');
+window.Promise = require('bluebird');
 window.attachFastClick = require('fastclick');
