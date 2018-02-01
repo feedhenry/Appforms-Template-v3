@@ -1,7 +1,8 @@
 {
-  "appid": "oc73r4cbxqqqdy3om2wexzqm",
-  "appkey": "a5f2c3e2be12551960c4f3e233d2f92ebbb8fe68",
+  "appid": "6beo7df6qi2w6tudmvw3gkcp",
+  "appkey": "cb7684ddd6960d601168f91c6b3ab720c48f8126",
+  "apptitle": "Cordova Forms App",
   "connectiontag": "0.0.2",
-  "host": "http://testing.ndonnelly.skunkhenry.com",
-  "projectid": "oc73r4fi4ytqzzngtpzxzn7o"
+  "host": "https://testing.feedhenry.me",
+  "projectid": "6beo7dhvsswqphrxzs3rcwrb"
 }
