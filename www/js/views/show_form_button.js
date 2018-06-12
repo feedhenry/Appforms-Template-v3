@@ -48,6 +48,13 @@ ShowFormButtonView = Backbone.View.extend({
             "autoShow": true
         });
 
+        //The form view has been created, populate the submission with any pre-populated data.
+        App.populateFieldData(function() {
+
+            //Finished pre-populating the form submission, now render it.
+            App.views.form.render();
+        });
+
     },
 
     fetch: function() {
