@@ -1,3 +1,6 @@
+1.3.18 - 2018-06-12 -
+Updating moment to 2.22.2
+
 1.3.16 - 2017-10-23 - Rachael O'Regan
 
 Updating fh-js-sdk to 2.22.5
